@@ -4,6 +4,19 @@
 #include <ctime>
 #include <Windows.h>
 using namespace std;
+
+int const REGION[9][9]={ 
+ {0, 0, 1, 1, 1, 1, 1, 2, 2}, 
+ {0, 0, 0, 1, 1, 1, 2, 2, 2}, 
+ {3, 0, 0, 0, 1, 2, 2, 2, 5}, 
+ {3, 3, 0, 4, 4, 4, 2, 5, 5}, 
+ {3, 3, 3, 4, 4, 4, 5, 5, 5}, 
+ {3, 3, 6, 4, 4, 4, 8, 5, 5}, 
+ {3, 6, 6, 6, 7, 8, 8, 8, 5}, 
+ {6, 6, 6, 7, 7, 7, 8, 8, 8}, 
+ {6, 6, 7, 7, 7, 7, 7, 8, 8} 
+};
+
 void printMap(int map[9][9]);
 bool masihAdaKosong(int map[9][9], int &baris, int &kolom){
 	for(int i=0; i<9; i++){
@@ -34,27 +47,30 @@ bool kolomAman(int map[9][9], int kolom, int angka){
 	return true;
 }
 bool sectionAman(int map[9][9], int baris, int kolom, int angka){
-	for(int i=0; i<3; i++){
-		for(int j=0; j<3; j++){
-			if(map[i+baris][j+kolom] == angka){
-				return false;
-			}
+	int reg=REGION[baris][kolom]; 
+
+	for(int i=0;i<9;i++) 
+	{ 
+		for(int j=0;j<9;j++) 
+		{ 
+			if(REGION[i][j]==reg) 
+			{ 
+				if(map[i][j]==angka) 
+					return false; 
+			} 
 		}
 	}
 	return true;
 }
 bool isSafe(int map[9][9], int baris, int kolom, int i){
 	bool a,b,c;
-	a = sectionAman(map, baris-baris%3, kolom-kolom%3, i);
+	a = sectionAman(map, baris, kolom, i);
 	b = barisAman(map, baris, i);
 	c = kolomAman(map, kolom, i);
-	/*cout<<a<<" "<<b<<" "<<c<<endl;*/
 	if (a && b && c){
-		/*cout<<"ye";*/
 		return true;
 	}
 	else{
-		/*cout<<"nah";*/
 		return false;
 	}
 }
@@ -107,7 +123,8 @@ bool solve(int map[9][9]){
 }
 
 void main(){
-	/*{{3, 0, 6, 5, 0, 8, 4, 0, 0},
+int start_s=clock();
+	/*int map[9][9] = {{3, 0, 6, 5, 0, 8, 4, 0, 0},
                       {5, 2, 0, 0, 0, 0, 0, 0, 0},
                       {0, 8, 7, 0, 0, 0, 0, 3, 1},
                       {0, 0, 3, 0, 1, 0, 0, 8, 0},
@@ -116,8 +133,7 @@ void main(){
                       {1, 3, 0, 0, 0, 0, 2, 5, 0},
                       {0, 0, 0, 0, 0, 0, 0, 7, 4},
                       {0, 0, 5, 2, 0, 6, 3, 0, 0}};*/
-int start_s=clock();
-	int map[9][9] = {{1, 2, 0, 0, 0, 0, 0, 0, 0},
+	int map[9][9] = {{0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -125,7 +141,8 @@ int start_s=clock();
                       {0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                      {0, 0, 0, 0, 0, 0, 0, 2, 1}};
+                      {0, 0, 0, 0, 0, 0, 0, 0, 0}};
+
 	if (solve(map)){
 		printMap(map);
 	} else {
