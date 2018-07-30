@@ -21,5 +21,11 @@
     <ClCompile Include="cekSection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main_shared.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rev1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,17 @@
+﻿Build started 06/07/2018 20:40:30.
+     1>Project "C:\SAMUEL\KULIAH\KB\Project\sudoku\sudoku\sudoku.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\sudoku.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         sudoku.vcxproj -> C:\SAMUEL\KULIAH\KB\Project\sudoku\Release\sudoku.exe
+       FinalizeBuildStatus:
+         Deleting file "Release\sudoku.unsuccessfulbuild".
+         Touching "Release\sudoku.lastbuildstate".
+     1>Done Building Project "C:\SAMUEL\KULIAH\KB\Project\sudoku\sudoku\sudoku.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.05
